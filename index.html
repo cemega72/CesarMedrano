@@ -6,9 +6,9 @@
   <title>Portafolio | César Medrano</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans">
+<body class="bg-gray-50 text-gray-800 font-sans relative">
 
-  <header class="bg-blue-900 text-white py-8 text-center">
+  <header class="bg-blue-900 text-white py-8 text-center fixed top-0 w-full z-50 shadow-md">
     <h1 class="text-4xl font-bold">César Medrano</h1>
     <p class="text-xl mt-2">Especialista en TI | Líder de proyectos de software</p>
     <nav class="mt-4 space-x-6">
@@ -19,6 +19,8 @@
       <a href="#contacto" class="hover:underline">Contacto</a>
     </nav>
   </header>
+
+  <div class="pt-48"></div>
 
   <section id="inicio" class="py-12 px-6 text-center">
     <img src="foto-perfil.jpg" alt="César Medrano" class="w-40 h-40 rounded-full mx-auto mb-6 shadow-lg">
@@ -103,6 +105,10 @@
       </form>
     </div>
   </section>
+
+  <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="fixed bottom-6 right-6 bg-blue-700 hover:bg-blue-800 text-white p-3 rounded-full shadow-lg">
+    ⬆️
+  </button>
 
 </body>
 </html>
