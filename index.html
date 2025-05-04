@@ -1,14 +1,27 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portafolio | César Medrano</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
 </head>
+
 <body class="bg-gray-50 text-gray-800 font-sans relative">
 
-  <header class="bg-blue-900 text-white py-8 text-center fixed top-0 w-full z-50 shadow-md">
+  <!-- Botón de volver arriba -->
+  <button id="backToTop"
+    class="fixed bottom-6 right-6 bg-blue-600 text-white p-3 rounded-full shadow-lg hover:bg-blue-700 hidden">
+    ↑
+  </button>
+
+  <header class="bg-blue-900 text-white py-8 text-center fixed top-0 left-0 w-full z-50 shadow">
     <h1 class="text-4xl font-bold">César Medrano</h1>
     <p class="text-xl mt-2">Especialista en TI | Líder de proyectos de software</p>
     <nav class="mt-4 space-x-6">
@@ -16,99 +29,186 @@
       <a href="#experiencia" class="hover:underline">Experiencia</a>
       <a href="#proyectos" class="hover:underline">Proyectos</a>
       <a href="#skills" class="hover:underline">Habilidades</a>
+      <a href="#logros" class="hover:underline">Logros</a>
       <a href="#contacto" class="hover:underline">Contacto</a>
     </nav>
   </header>
 
-  <div class="pt-48"></div>
+  <main class="pt-48">
+    <section id="inicio" class="py-12 px-6 text-center scroll-mt-36">
+      <img src="foto-perfil.jpg" alt="César Medrano" class="w-40 h-40 rounded-full mx-auto mb-6 shadow-lg">
+      <h2 class="text-3xl font-semibold mb-4">Hola, soy César Medrano</h2>
+      <p class="text-lg max-w-3xl mx-auto">
+        Profesional con más de <strong>30 años de experiencia en Tecnologías de la Información</strong>, y 15 años
+        liderando
+        proyectos de desarrollo de software en sectores como <strong>salud</strong> y <strong>generación de energía
+          eléctrica</strong>.
+        <br><br>
+        Mi propósito es <strong>acompañar a los líderes del sector salud en sus procesos de transformación
+          digital</strong>.
+        Trabajo impulsando equipos <strong>altamente efectivos</strong> mediante el <strong>liderazgo basado en
+          confianza</strong> y
+        el desarrollo de soluciones que generan <strong>impacto en el negocio</strong> y en la calidad de atención.
+      </p>
+    </section>
 
-  <section id="inicio" class="py-12 px-6 text-center">
-    <img src="foto-perfil.jpg" alt="César Medrano" class="w-40 h-40 rounded-full mx-auto mb-6 shadow-lg">
-    <h2 class="text-3xl font-semibold mb-4">Hola, soy César Medrano</h2>
-    <p class="text-lg max-w-3xl mx-auto">
-      Profesional con más de <strong>30 años de experiencia en Tecnologías de la Información</strong>, y 15 años liderando
-      proyectos de desarrollo de software en sectores como <strong>salud</strong> y <strong>generación de energía eléctrica</strong>. Apasionado por la <strong>efectividad, el liderazgo basado en confianza</strong> y la mejora continua.
-    </p>
-  </section>
-
-  <section id="experiencia" class="py-12 px-6">
-    <h2 class="text-2xl font-bold mb-6 text-center">Experiencia Profesional</h2>
-    <div class="max-w-4xl mx-auto space-y-4">
-      <div><strong>Consultor Independiente (2022 - Actualidad):</strong> Liderazgo de proyectos como la integración con TEDEF para SUSALUD. Asesoría en transformación digital.</div>
-      <div><strong>Jefe de Desarrollo - Clínica San Felipe (1997 - 2022):</strong> Desarrollo e implementación de un HIS completo, reducción de costos, integración de sistemas.</div>
-      <div><strong>Consultor - Clínica Monte Sinaí (2005):</strong> Desarrollo de sistema de farmacia, automatización y reducción de errores.</div>
-      <div><strong>Administrador de Red - EDEGEL (1993 - 1997):</strong> Automatización de procesos de mantenimiento y desarrollo interno de soluciones.</div>
-    </div>
-  </section>
-
-  <section id="proyectos" class="py-12 px-6 bg-white">
-    <h2 class="text-2xl font-bold mb-6 text-center">Proyectos Destacados</h2>
-    <div class="max-w-4xl mx-auto space-y-8">
-      <div>
-        <h3 class="font-semibold">Sistema HIS – Clínica San Felipe</h3>
-        <p>Automatización del 90% de los procesos hospitalarios.</p>
-        <img src="proyecto-his.png" alt="Sistema HIS" class="mt-2 rounded shadow-md">
+    <section id="experiencia" class="py-12 px-6 scroll-mt-36">
+      <h2 class="text-2xl font-bold mb-10 text-center">Experiencia Profesional</h2>
+      <div class="max-w-4xl mx-auto relative border-l-2 border-blue-800 pl-6">
+        <div class="mb-10 relative">
+          <div class="absolute -left-3 top-0 w-6 h-6 bg-blue-800 rounded-full border-4 border-white"></div>
+          <h3 class="font-semibold">Consultor Independiente</h3>
+          <p class="text-sm text-gray-600 mb-1">2022 - Actualidad</p>
+          <p>Liderazgo de proyectos como la integración con TEDEF para SUSALUD. Asesoría en transformación digital.</p>
+        </div>
+        <div class="mb-10 relative">
+          <div class="absolute -left-3 top-0 w-6 h-6 bg-blue-800 rounded-full border-4 border-white"></div>
+          <h3 class="font-semibold">Jefe de Desarrollo - Clínica San Felipe</h3>
+          <p class="text-sm text-gray-600 mb-1">1997 - 2022</p>
+          <p>Desarrollo e implementación de un HIS completo, reducción de costos, integración de sistemas.</p>
+        </div>
+        <div class="mb-10 relative">
+          <div class="absolute -left-3 top-0 w-6 h-6 bg-blue-800 rounded-full border-4 border-white"></div>
+          <h3 class="font-semibold">Consultor - Clínica Monte Sinaí</h3>
+          <p class="text-sm text-gray-600 mb-1">2005</p>
+          <p>Desarrollo de sistema de farmacia, automatización y reducción de errores.</p>
+        </div>
+        <div class="relative">
+          <div class="absolute -left-3 top-0 w-6 h-6 bg-blue-800 rounded-full border-4 border-white"></div>
+          <h3 class="font-semibold">Administrador de Red - EDEGEL</h3>
+          <p class="text-sm text-gray-600 mb-1">1993 - 1997</p>
+          <p>Automatización de procesos de mantenimiento y desarrollo interno de soluciones.</p>
+        </div>
       </div>
-      <div>
-        <h3 class="font-semibold">Facturación Electrónica – SUSALUD</h3>
-        <p>Implementación de tramas electrónicas (TEDEF).</p>
+    </section>
+
+    <section id="proyectos" class="py-12 px-6 bg-white scroll-mt-36">
+      <h2 class="text-2xl font-bold mb-6 text-center">Proyectos Destacados</h2>
+      <div class="max-w-4xl mx-auto space-y-8">
+        <div>
+          <h3 class="font-semibold">Sistema HIS – Clínica San Felipe</h3>
+          <p>Automatización del 90% de los procesos hospitalarios.</p>
+          <img src="proyecto-his.png" alt="Sistema HIS" class="mt-2 rounded shadow-md">
+        </div>
+        <div>
+          <h3 class="font-semibold">Facturación Electrónica – SUSALUD</h3>
+          <p>Implementación de tramas electrónicas (TEDEF).</p>
+        </div>
+        <div>
+          <h3 class="font-semibold">Sistema de Farmacia – Clínica Monte Sinaí</h3>
+          <p>Reducción de errores operativos en un 80%.</p>
+        </div>
+        <div>
+          <h3 class="font-semibold">Automatización – EDEGEL</h3>
+          <p>Mejoras en planificación y mantenimiento técnico.</p>
+        </div>
       </div>
-      <div>
-        <h3 class="font-semibold">Sistema de Farmacia – Clínica Monte Sinaí</h3>
-        <p>Reducción de errores operativos en un 80%.</p>
+    </section>
+
+    <section id="skills" class="py-12 px-6 scroll-mt-36">
+      <h2 class="text-2xl font-bold mb-6 text-center">Habilidades y Herramientas</h2>
+      <div class="max-w-4xl mx-auto">
+        <h3 class="font-semibold mb-2">Profesionales</h3>
+        <ul class="list-disc list-inside mb-6">
+          <li>Gestión de proyectos</li>
+          <li>Liderazgo técnico</li>
+          <li>Análisis de procesos</li>
+          <li>Pensamiento estratégico</li>
+          <li>Mentoría y formación de equipos</li>
+          <li>Mejora continua</li>
+        </ul>
+
+        <h3 class="font-semibold mb-2">Tecnológicas</h3>
+        <div class="space-y-3">
+          <div><span class="font-medium">SQL Server</span>
+            <div class="w-full bg-gray-200 rounded-full h-4">
+              <div class="bg-green-500 h-4 rounded-full w-full"></div>
+            </div>
+          </div>
+          <div><span class="font-medium">Oracle</span>
+            <div class="w-full bg-gray-200 rounded-full h-4">
+              <div class="bg-blue-500 h-4 rounded-full w-2/5"></div>
+            </div>
+          </div>
+          <div><span class="font-medium">Microsoft Project</span>
+            <div class="w-full bg-gray-200 rounded-full h-4">
+              <div class="bg-yellow-500 h-4 rounded-full w-3/5"></div>
+            </div>
+          </div>
+          <div><span class="font-medium">QlikView</span>
+            <div class="w-full bg-gray-200 rounded-full h-4">
+              <div class="bg-yellow-500 h-4 rounded-full w-3/5"></div>
+            </div>
+          </div>
+          <div><span class="font-medium">Power BI</span>
+            <div class="w-full bg-gray-200 rounded-full h-4">
+              <div class="bg-yellow-500 h-4 rounded-full w-3/5"></div>
+            </div>
+          </div>
+          <div><span class="font-medium">SCRUM / CMMI / PMBOK</span>
+            <div class="w-full bg-gray-200 rounded-full h-4">
+              <div class="bg-purple-500 h-4 rounded-full w-4/5"></div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div>
-        <h3 class="font-semibold">Automatización – EDEGEL</h3>
-        <p>Mejoras en planificación y mantenimiento técnico.</p>
+    </section>
+
+    <section id="logros" class="py-12 px-6 bg-white scroll-mt-36">
+      <h2 class="text-2xl font-bold mb-6 text-center">Logros Destacados</h2>
+      <div class="max-w-4xl mx-auto space-y-6">
+        <div>
+          <h3 class="font-semibold">Reducción de Costos</h3>
+          <p>Diseño de soluciones que redujeron significativamente el gasto operativo en la Clínica San Felipe.</p>
+        </div>
+        <div>
+          <h3 class="font-semibold">Automatización de Procesos</h3>
+          <p>Implementación de un HIS que automatizó más del 90% de los procesos administrativos y clínicos.</p>
+        </div>
+        <div>
+          <h3 class="font-semibold">Transformación Digital</h3>
+          <p>Impulso de iniciativas tecnológicas estratégicas en el sector salud a nivel nacional.</p>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="skills" class="py-12 px-6">
-    <h2 class="text-2xl font-bold mb-6 text-center">Habilidades y Herramientas</h2>
-    <div class="max-w-4xl mx-auto">
-      <h3 class="font-semibold mb-2">Profesionales</h3>
-      <ul class="list-disc list-inside mb-6">
-        <li>Gestión de proyectos</li>
-        <li>Liderazgo técnico</li>
-        <li>Análisis de procesos</li>
-        <li>Pensamiento estratégico</li>
-        <li>Mentoría y formación de equipos</li>
-        <li>Mejora continua</li>
-      </ul>
-
-      <h3 class="font-semibold mb-2">Tecnológicas</h3>
-      <div class="space-y-3">
-        <div><span class="font-medium">SQL Server</span> <div class="w-full bg-gray-200 rounded-full h-4"><div class="bg-green-500 h-4 rounded-full w-full"></div></div></div>
-        <div><span class="font-medium">Oracle</span> <div class="w-full bg-gray-200 rounded-full h-4"><div class="bg-blue-500 h-4 rounded-full w-2/5"></div></div></div>
-        <div><span class="font-medium">Microsoft Project</span> <div class="w-full bg-gray-200 rounded-full h-4"><div class="bg-yellow-500 h-4 rounded-full w-3/5"></div></div></div>
-        <div><span class="font-medium">QlikView</span> <div class="w-full bg-gray-200 rounded-full h-4"><div class="bg-yellow-500 h-4 rounded-full w-3/5"></div></div></div>
-        <div><span class="font-medium">Power BI</span> <div class="w-full bg-gray-200 rounded-full h-4"><div class="bg-yellow-500 h-4 rounded-full w-3/5"></div></div></div>
-        <div><span class="font-medium">SCRUM / CMMI / PMBOK</span> <div class="w-full bg-gray-200 rounded-full h-4"><div class="bg-purple-500 h-4 rounded-full w-4/5"></div></div></div>
+    <section id="contacto" class="py-12 px-6 bg-gray-100 scroll-mt-36">
+      <h2 class="text-2xl font-bold mb-4 text-center">Contáctame</h2>
+      <p class="text-center mb-6">¿Tienes un proyecto o necesitas apoyo en tu transformación digital? Estoy disponible
+        para colaborar.</p>
+      <div class="max-w-md mx-auto">
+        <ul class="mb-6">
+          <li>📧 <strong>Email:</strong> cesarmedranogamboa@gmail.com</li>
+          <li>💼 <strong>LinkedIn:</strong> <a href="https://linkedin.com/in/cesarmedrano"
+              class="text-blue-600 hover:underline" target="_blank">linkedin.com/in/cesarmedrano</a></li>
+        </ul>
+        <form action="mailto:cesarmedranogamboa@gmail.com" method="post" enctype="text/plain" class="space-y-4">
+          <input type="text" name="name" placeholder="Tu nombre" class="w-full px-4 py-2 border rounded" required>
+          <input type="email" name="email" placeholder="Tu correo electrónico" class="w-full px-4 py-2 border rounded"
+            required>
+          <textarea name="message" placeholder="Escribe tu mensaje"
+            class="w-full px-4 py-2 border rounded h-32"></textarea>
+          <button type="submit" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Enviar</button>
+        </form>
       </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
-  <section id="contacto" class="py-12 px-6 bg-gray-100">
-    <h2 class="text-2xl font-bold mb-4 text-center">Contáctame</h2>
-    <p class="text-center mb-6">¿Tienes un proyecto o necesitas apoyo en tu transformación digital? Estoy disponible para colaborar.</p>
-    <div class="max-w-md mx-auto">
-      <ul class="mb-6">
-        <li>📧 <strong>Email:</strong> cesarmedranogamboa@gmail.com</li>
-        <li>💼 <strong>LinkedIn:</strong> <a href="https://linkedin.com/in/cesarmedrano" class="text-blue-600 hover:underline" target="_blank">linkedin.com/in/cesarmedrano</a></li>
-      </ul>
-      <form action="mailto:cesarmedranogamboa@gmail.com" method="post" enctype="text/plain" class="space-y-4">
-        <input type="text" name="name" placeholder="Tu nombre" class="w-full px-4 py-2 border rounded" required>
-        <input type="email" name="email" placeholder="Tu correo electrónico" class="w-full px-4 py-2 border rounded" required>
-        <textarea name="message" placeholder="Escribe tu mensaje" class="w-full px-4 py-2 border rounded h-32"></textarea>
-        <button type="submit" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Enviar</button>
-      </form>
-    </div>
-  </section>
+  <script>
+    const backToTopButton = document.getElementById('backToTop');
 
-  <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="fixed bottom-6 right-6 bg-blue-700 hover:bg-blue-800 text-white p-3 rounded-full shadow-lg">
-    ⬆️
-  </button>
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        backToTopButton.classList.remove('hidden');
+      } else {
+        backToTopButton.classList.add('hidden');
+      }
+    });
 
+    backToTopButton.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
 </body>
+
 </html>
