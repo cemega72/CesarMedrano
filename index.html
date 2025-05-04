@@ -1,12 +1,170 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portafolio | César Medrano</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio | César Medrano</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        header,
+        section {
+            padding: 2rem;
+        }
+
+        header {
+            background-color: #003366;
+            color: white;
+            text-align: center;
+        }
+
+        nav a {
+            margin: 0 1rem;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        section:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .bar {
+            background-color: #eee;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .level {
+            padding: 0.3rem;
+            color: white;
+            text-align: center;
+            border-radius: 5px;
+        }
+    </style>
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans">
-...
+
+<body>
+
+    <header>
+        <h1>César Medrano</h1>
+        <p>Especialista en TI | Líder de proyectos de software</p>
+        <nav>
+            <a href="#inicio">Inicio</a>
+            <a href="#experiencia">Experiencia</a>
+            <a href="#proyectos">Proyectos</a>
+            <a href="#skills">Habilidades</a>
+            <a href="#contacto">Contacto</a>
+        </nav>
+    </header>
+
+    <section id="inicio">
+        <h2>Hola, soy César Medrano</h2>
+        <p>
+            Profesional con más de <strong>30 años de experiencia en Tecnologías de la Información</strong>, y 15 años
+            liderando
+            proyectos de desarrollo de software en sectores como <strong>salud</strong> y <strong>generación de energía
+                eléctrica</strong>.
+            Apasionado por la <strong>efectividad, el liderazgo basado en confianza</strong> y la mejora continua.
+        </p>
+    </section>
+
+    <section id="experiencia">
+        <h2>Experiencia Profesional</h2>
+        <ul>
+            <li><strong>Consultor Independiente (2022 - Actualidad)</strong><br>Liderazgo de proyectos como la
+                integración con TEDEF para SUSALUD. Asesoría en transformación digital.</li>
+            <li><strong>Jefe de Desarrollo - Clínica San Felipe (1997 - 2022)</strong><br>Desarrollo e implementación de
+                un HIS completo, reducción de costos, integración de sistemas.</li>
+            <li><strong>Consultor - Clínica Monte Sinaí (2005)</strong><br>Desarrollo de sistema de farmacia,
+                automatización y reducción de errores.</li>
+            <li><strong>Administrador de Red - EDEGEL (1993 - 1997)</strong><br>Automatización de procesos de
+                mantenimiento y desarrollo interno de soluciones.</li>
+        </ul>
+    </section>
+
+    <section id="proyectos">
+        <h2>Proyectos Destacados</h2>
+        <ul>
+            <li><strong>Sistema HIS – Clínica San Felipe</strong>: Automatización del 90% de los procesos hospitalarios.
+            </li>
+            <li><strong>Facturación Electrónica – SUSALUD</strong>: Implementación de tramas electrónicas (TEDEF).</li>
+            <li><strong>Sistema de Farmacia – Clínica Monte Sinaí</strong>: Reducción de errores operativos en un 80%.
+            </li>
+            <li><strong>Automatización – EDEGEL</strong>: Mejoras en planificación y mantenimiento técnico.</li>
+        </ul>
+    </section>
+
+    <section id="skills">
+        <h2>Habilidades y Herramientas</h2>
+        <h3>Profesionales</h3>
+        <ul>
+            <li>✔️ Gestión de proyectos</li>
+            <li>✔️ Liderazgo técnico</li>
+            <li>✔️ Análisis de procesos</li>
+            <li>✔️ Pensamiento estratégico</li>
+            <li>✔️ Mentoría y formación de equipos</li>
+            <li>✔️ Mejora continua</li>
+        </ul>
+        <h3>Tecnológicas</h3>
+        <div><strong>SQL Server</strong>
+            <div class="bar">
+                <div class="level" style="width:100%; background-color:#4caf50;">Experto</div>
+            </div>
+        </div>
+        <div><strong>Oracle</strong>
+            <div class="bar">
+                <div class="level" style="width:40%; background-color:#2196f3;">Básico</div>
+            </div>
+        </div>
+        <div><strong>Microsoft Project</strong>
+            <div class="bar">
+                <div class="level" style="width:60%; background-color:#ff9800;">Intermedio</div>
+            </div>
+        </div>
+        <div><strong>QlikView</strong>
+            <div class="bar">
+                <div class="level" style="width:60%; background-color:#ff9800;">Intermedio</div>
+            </div>
+        </div>
+        <div><strong>Power BI</strong>
+            <div class="bar">
+                <div class="level" style="width:60%; background-color:#ff9800;">Intermedio</div>
+            </div>
+        </div>
+        <div><strong>SCRUM / CMMI / PMBOK</strong>
+            <div class="bar">
+                <div class="level" style="width:80%; background-color:#673ab7;">Avanzado</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contacto">
+        <h2>Contáctame</h2>
+        <p>¿Tienes un proyecto o necesitas apoyo en tu transformación digital? Estoy disponible para colaborar.</p>
+        <ul>
+            <li>📧 <strong>Email:</strong> cesarmedranogamboa@gmail.com</li>
+            <li>💼 <strong>LinkedIn:</strong> <a href="https://linkedin.com/in/cesarmedrano"
+                    target="_blank">linkedin.com/in/cesarmedrano</a></li>
+        </ul>
+        <form action="mailto:cesarmedranogamboa@gmail.com" method="post" enctype="text/plain">
+            <input type="text" name="name" placeholder="Tu nombre"
+                style="width: 100%; padding: 0.5rem; margin-bottom: 1rem;" required>
+            <input type="email" name="email" placeholder="Tu correo electrónico"
+                style="width: 100%; padding: 0.5rem; margin-bottom: 1rem;" required>
+            <textarea name="message" placeholder="Escribe tu mensaje"
+                style="width: 100%; padding: 0.5rem; height: 150px;"></textarea>
+            <button type="submit"
+                style="margin-top: 1rem; padding: 0.7rem 1.5rem; background-color: #4caf50; color: white; border: none; cursor: pointer;">Enviar</button>
+        </form>
+    </section>
+
 </body>
+
 </html>
