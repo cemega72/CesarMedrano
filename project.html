@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title id="t">Proyecto – Portafolio</title>
+
+  <!-- SEO básico dinámico -->
+  <meta id="d"   name="description" content="" />
+  <meta property="og:type" content="website" />
+  <meta id="ogt" property="og:title"       content="" />
+  <meta id="ogd" property="og:description" content="" />
+  <meta id="ogi" property="og:image"       content="assets/og-image.jpg" />
+
+  <link rel="icon" href="assets/favicon.ico" />
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    /* Layout general del sitio (fuera del Shadow DOM del proyecto) */
+    body { background:#fff; color:#0f172a; }
+  </style>
+</head>
+<body class="bg-white text-gray-800">
+  <header class="border-b bg-white/90 backdrop-blur">
+    <div class="max-w-3xl mx-auto px-6 py-6 flex items-center justify-between">
+      <a href="projects.html" class="text-[color:var(--brand,#2563eb)] font-semibold hover:underline">← Volver a proyectos</a>
+      <div></div>
+    </div>
+  </header>
+
+  <main class="max-w-3xl mx-auto px-6 py-10">
+    <h1 id="title" class="text-3xl font-extrabold mb-2">Cargando…</h1>
+    <!-- si quieres fecha/cliente, puedes añadir <p> aquí -->
+    <div id="content-host"></div>
+  </main>
+
+  <script>
+  (async () => {
+    const showError = (msg) => {
+      const main = document.querySelector('main');
+      const p = document.createElement('p');
+      p.className = 'mt-4 text-red-600';
+      p.innerHTML = msg;
+      main.appendChild(p);
+    };
+
+    const qs      = new URLSearchParams(location.search);
+    const value   = qs.get('slug');            // usamos ?slug=
+    const titleEl = document.getElementById('title');
+    const host    = document.getElementById('content-host');
+
+    if (!value) { titleEl.textContent = 'Proyecto no encontrado (falta ?slug=...)'; return; }
+    if (!host)  { titleEl.textContent = 'Falta el contenedor #content-host en project.html'; return; }
+
+    // Carga robusta de projects.json (prueba dos rutas típicas)
+    async function loadProjects() {
+      const candidates = ['./assets/projects.json', '../assets/projects.json'];
+      let lastErr = null;
+      for (const url of candidates) {
+        try {
+          const r = await fetch(url, { cache: 'no-store' });
+          if (!r.ok) throw new Error(`HTTP ${r.status} (${url})`);
+          console.log('projects.json cargado desde:', url);
+          return await r.json();
+        } catch (e) {
+          lastErr = e;
+          console.warn('Fallo cargando', url, e);
+        }
+      }
+      throw lastErr || new Error('No se pudo cargar assets/projects.json');
+    }
+
+    try {
+      const projects = await loadProjects();
+
+      // Detectar clave slug|id
+      const first = projects[0] || {};
+      const key   = ('slug' in first) ? 'slug' : (('id' in first) ? 'id' : null);
+      if (!key) throw new Error('projects.json no tiene clave "slug" ni "id".');
+
+      const proj = projects.find(p => String(p[key]) === String(value));
+      if (!proj) {
+        titleEl.textContent = 'Proyecto no encontrado';
+        showError(`No existe una entrada con ${key} = <code>${value}</code> en <code>assets/projects.json</code>.`);
+        return;
+      }
+
+      // Título (y opcionalmente subtítulo/desc corto)
+      titleEl.textContent = proj.title || 'Proyecto';
+
+      // Shadow DOM (aislar estilos del HTML externo)
+      const shadow = host.attachShadow({ mode: 'open' });
+
+      // Tema claro y legibilidad dentro del proyecto (no afecta al sitio)
+      const lightCSS = `
+        <style>
+          :host { all: initial; display:block; font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; }
+          .proj-sandbox { background: transparent; color: #0f172a; }
+          .proj-sandbox img { max-width: 100%; height: auto; display:block; border-radius: .5rem; }
+          .proj-sandbox h1, .proj-sandbox h2, .proj-sandbox h3, .proj-sandbox h4, .proj-sandbox h5, .proj-sandbox h6 { color: #0f172a !important; }
+          .proj-sandbox p, .proj-sandbox li, .proj-sandbox time, .proj-sandbox span, .proj-sandbox dd, .proj-sandbox small { color: #334155 !important; }
+          .proj-sandbox a { color: var(--brand, #2563eb) !important; text-decoration:none; }
+          .proj-sandbox a:hover { text-decoration:underline; }
+          .proj-sandbox article, .proj-sandbox section, .proj-sandbox .card { background: transparent !important; border:0 !important; box-shadow:none !important; }
+          .proj-sandbox .lead { color:#475569 !important; }
+          .proj-sandbox header { margin-bottom:1rem; }
+          .proj-sandbox article { margin-top:0; padding:0; }
+        </style>
+      `;
+
+      // Utilidad: reescribir URLs relativas a absolutas según la ubicación del HTML del proyecto
+      const absolutize = (rootEl, baseAbs) => {
+        const isAbs = v => /^[a-zA-Z][a-zA-Z0-9+.-]*:/.test(v);
+        const fix = (el, attr) => {
+          const v = el.getAttribute(attr);
+          if (!v || v.startsWith('data:') || v.startsWith('blob:') || v.startsWith('#')) return;
+          if (isAbs(v)) return;
+          try { el.setAttribute(attr, new URL(v, baseAbs).toString()); } catch {}
+        };
+        rootEl.querySelectorAll('img, source, video, audio, track, a, link, script').forEach(el => {
+          if (el.tagName === 'A' || el.tagName === 'LINK') fix(el, 'href');
+          if (el.tagName === 'SCRIPT') fix(el, 'src');
+          if (el.tagName === 'IMG' || el.tagName === 'SOURCE' || el.tagName === 'VIDEO' || el.tagName === 'AUDIO' || el.tagName === 'TRACK') {
+            fix(el, 'src'); fix(el, 'srcset');
+          }
+        });
+      };
+
+      if (proj.htmlUrl) {
+        // Cargar HTML externo del proyecto
+        const htmlAbs = new URL(proj.htmlUrl, location.href).toString();
+        const resp = await fetch(htmlAbs, { cache: 'no-store' });
+        if (!resp.ok) throw new Error(`htmlUrl HTTP ${resp.status} → ${htmlAbs}`);
+        const htmlText = await resp.text();
+
+        // Parsear y extraer porciones útiles (header + main/article; si no hay, todo el body)
+        const doc      = new DOMParser().parseFromString(htmlText, 'text/html');
+        const headerEl = doc.querySelector('header');
+        const mainEl   = doc.querySelector('main, article');
+
+        const wrapper  = document.createElement('div');
+        if (headerEl) wrapper.appendChild(headerEl.cloneNode(true));
+        if (mainEl)   wrapper.appendChild(mainEl.cloneNode(true));
+        if (!headerEl && !mainEl) wrapper.innerHTML = doc.body.innerHTML;
+
+        // Reescribir rutas relativas (clave si usas ./imagen.png al lado del HTML)
+        absolutize(wrapper, new URL('.', htmlAbs));
+
+        // Inyectar en Shadow DOM
+        shadow.innerHTML = `${lightCSS}<div class="proj-sandbox">${wrapper.innerHTML}</div>`;
+
+      } else {
+        // HTML embebido en JSON (campo "html")
+        const wrapper = document.createElement('div');
+        wrapper.innerHTML = proj.html || '<p>No hay contenido.</p>';
+
+        // Si incluyes proj.baseUrl en el JSON, también absolutiza:
+        if (proj.baseUrl) absolutize(wrapper, new URL(proj.baseUrl, location.href));
+
+        shadow.innerHTML = `${lightCSS}<div class="proj-sandbox">${wrapper.innerHTML}</div>`;
+      }
+
+      // SEO mínimo
+      (function () {
+        const tEl  = document.getElementById('t');
+        const dEl  = document.getElementById('d');
+        const ogt  = document.getElementById('ogt');
+        const ogd  = document.getElementById('ogd');
+
+        if (tEl) tEl.textContent = (proj.title || 'Proyecto') + ' – Portafolio';
+        if (dEl) dEl.setAttribute('content', proj.desc || proj.excerpt || '');
+        if (ogt) ogt.setAttribute('content', proj.title || '');
+        if (ogd) ogd.setAttribute('content', proj.desc || proj.excerpt || '');
+      })();
+
+    } catch (e) {
+      console.error('Error cargando el proyecto:', e);
+      titleEl.textContent = 'No se pudo cargar el proyecto';
+      showError(`Detalle: <code>${(e && e.message) || e}</code>.<br>
+        Verifica: 1) que <code>assets/projects.json</code> existe y es válido, 2) que la URL tenga <code>?slug=...</code> con un valor que exista, 3) que <code>htmlUrl</code> apunte al archivo correcto (usa rutas <b>relativas</b>), 4) que estés sirviendo por HTTP (Live Server / <code>python -m http.server</code>).`);
+    }
+  })();
+  </script>
+</body>
+</html>

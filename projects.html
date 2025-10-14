@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Proyectos – Portafolio</title>
+  <meta name="description" content="Listado de proyectos destacados." />
+  <link rel="icon" href="assets/favicon.ico" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Proyectos – Portafolio" />
+  <meta property="og:description" content="Proyectos recientes de arquitectura, desarrollo y datos." />
+  <meta property="og:image" content="assets/og-image.jpg" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet" />
+  <style>
+    :root{ --brand:#2563eb; --brand-dark:#1d4ed8; --brand-secondary:#1e40af; }
+    .card-hover { transition: transform .3s ease, box-shadow .3s ease; }
+    .card-hover:hover { transform: translateY(-4px); box-shadow: 0 16px 28px -10px rgba(37,99,235,.25); }
+    .brand-gradient{ background: linear-gradient(135deg, var(--brand) 0%, var(--brand-secondary) 100%); }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+  <header class="border-b bg-white/90 backdrop-blur">
+    <div class="max-w-7xl mx-auto px-6 py-6 flex items-center justify-between">
+      <a href="index.html" class="text-[color:var(--brand)] font-semibold hover:underline">← Inicio</a>
+      <h1 class="text-2xl font-extrabold">Proyectos</h1>
+      <div></div>
+    </div>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-6 py-12">
+    <div id="projects-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+  </main>
+
+  <script>
+  (async function(){
+    const grid = document.getElementById('projects-grid');
+    try {
+      const res = await fetch('./assets/projects.json');
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      const projects = await res.json();
+
+      grid.innerHTML = projects.map(p => {
+        const tags = (p.tags || []).map(t =>
+          `<span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-sm">${t}</span>`
+        ).join('');
+
+        const header = p.image
+          ? `<img src="${p.image}" alt="${p.title}" class="h-44 w-full object-cover" loading="lazy" decoding="async">`
+          : `<div class="h-44 brand-gradient flex items-center justify-center">
+               <i class="fa-solid fa-${p.icon || 'folder-open'} text-white text-3xl"></i>
+             </div>`;
+
+        return `
+        <article class="group relative bg-white rounded-lg shadow-sm overflow-hidden card-hover h-full" aria-labelledby="${p.slug}">
+          ${header}
+          <div class="p-6">
+            <h2 id="${p.slug}" class="text-xl font-bold mb-2">${p.title}</h2>
+            <p class="text-gray-600 mb-4">${p.desc || ''}</p>
+            <div class="mt-auto flex flex-wrap gap-2 mb-4">${tags}</div>
+            <span class="inline-flex items-center gap-2 font-semibold
+                         text-[color:var(--brand)]
+                         group-hover:text-[color:var(--brand-dark)]">
+              Ver detalles <span aria-hidden="true">→</span>
+            </span>
+          </div>
+          <a href="project.html?slug=${p.slug}"
+             class="absolute inset-0 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[color:var(--brand)]"
+             aria-labelledby="${p.slug}">
+            <span class="sr-only">Ir a “${p.title}”</span>
+          </a>
+        </article>`;
+      }).join('');
+
+    } catch (e) {
+      grid.innerHTML = `<div class="col-span-full text-red-600">
+        No se pudieron cargar los proyectos. Ejecuta el sitio en un servidor local (p. ej., <code>python -m http.server</code>) o con Live Server.
+      </div>`;
+      console.error('Error cargando projects.json', e);
+    }
+  })();
+  </script>
+</body>
+</html>

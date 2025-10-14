@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title id="t">Post – Portafolio</title>
+
+  <!-- SEO básico dinámico -->
+  <meta id="d"   name="description" content="" />
+  <meta property="og:type" content="article" />
+  <meta id="ogt" property="og:title"       content="" />
+  <meta id="ogd" property="og:description" content="" />
+  <meta id="ogi" property="og:image"       content="assets/og-image.jpg" />
+
+  <link rel="icon" href="assets/favicon.ico" />
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    /* Estilos del layout del sitio (fuera del Shadow DOM del post) */
+    body { background:#fff; color:#0f172a; }
+  </style>
+</head>
+<body class="bg-white text-gray-800">
+  <header class="border-b bg-white/90 backdrop-blur">
+    <div class="max-w-3xl mx-auto px-6 py-6 flex items-center justify-between">
+      <a href="blog.html" class="text-[color:var(--brand,#2563eb)] font-semibold hover:underline">← Volver al blog</a>
+      <div></div>
+    </div>
+  </header>
+
+  <main class="max-w-3xl mx-auto px-6 py-10">
+    <h1 id="title" class="text-3xl font-extrabold mb-2">Cargando…</h1>
+    <p class="text-gray-500 mb-6"><time id="date" datetime=""></time></p>
+
+    <!-- Contenedor donde se insertará el post aislado -->
+    <div id="content-host"></div>
+  </main>
+
+  <script>
+  (async () => {
+    const showError = (msg) => {
+      const main = document.querySelector('main');
+      const p = document.createElement('p');
+      p.className = 'mt-4 text-red-600';
+      p.innerHTML = msg;
+      main.appendChild(p);
+    };
+
+    const qs      = new URLSearchParams(location.search);
+    const value   = qs.get('slug');            // seguimos usando ?slug=
+    const titleEl = document.getElementById('title');
+    const dateEl  = document.getElementById('date');
+    const host    = document.getElementById('content-host');
+
+    if (!value) { titleEl.textContent = 'Post no encontrado (falta ?slug=...)'; return; }
+    if (!host)  { titleEl.textContent = 'Falta el contenedor #content-host en post.html'; return; }
+
+    // Intenta cargar posts.json desde rutas típicas (raíz y un nivel arriba)
+    async function loadPosts() {
+      const candidates = ['./assets/posts.json', '../assets/posts.json'];
+      let lastErr = null;
+      for (const url of candidates) {
+        try {
+          const r = await fetch(url, { cache: 'no-store' });
+          if (!r.ok) throw new Error(`HTTP ${r.status} (${url})`);
+          console.log('posts.json cargado desde:', url);
+          return await r.json();
+        } catch (e) {
+          lastErr = e;
+          console.warn('Fallo cargando', url, e);
+        }
+      }
+      throw lastErr || new Error('No se pudo cargar assets/posts.json');
+    }
+
+    try {
+      const posts = await loadPosts();
+
+      // Detectar clave slug|id
+      const first = posts[0] || {};
+      const key   = ('slug' in first) ? 'slug' : (('id' in first) ? 'id' : null);
+      if (!key) throw new Error('posts.json no tiene clave "slug" ni "id".');
+
+      const post = posts.find(p => String(p[key]) === String(value));
+      if (!post) {
+        titleEl.textContent = 'Post no encontrado';
+        showError(`No existe una entrada con ${key} = <code>${value}</code> en <code>assets/posts.json</code>.`);
+        return;
+      }
+
+      // Título y fecha
+      titleEl.textContent = post.title || 'Sin título';
+      if (dateEl && post.date) {
+        try {
+          dateEl.textContent = new Date(post.date)
+            .toLocaleDateString('es-PE', { day:'numeric', month:'short', year:'numeric' });
+          dateEl.setAttribute('datetime', post.date);
+        } catch {}
+      }
+
+      // Shadow DOM (aisla estilos del post)
+      const shadow = host.attachShadow({ mode: 'open' });
+
+      // Tema claro y legibilidad dentro del post (no afecta al sitio)
+      const lightCSS = `
+        <style>
+          :host { all: initial; display:block; font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; }
+          .post-sandbox { background: transparent; color: #0f172a; }
+          .post-sandbox img { max-width: 100%; height: auto; display:block; border-radius: .5rem; }
+          .post-sandbox h1, .post-sandbox h2, .post-sandbox h3, .post-sandbox h4, .post-sandbox h5, .post-sandbox h6 { color: #0f172a !important; }
+          .post-sandbox p, .post-sandbox li, .post-sandbox time, .post-sandbox span, .post-sandbox dd, .post-sandbox small { color: #334155 !important; }
+          .post-sandbox a { color: var(--brand, #2563eb) !important; text-decoration:none; }
+          .post-sandbox a:hover { text-decoration:underline; }
+          .post-sandbox article, .post-sandbox section, .post-sandbox .card { background: transparent !important; border:0 !important; box-shadow:none !important; }
+          .post-sandbox .lead { color:#475569 !important; }
+          .post-sandbox header { margin-bottom:1rem; }
+          .post-sandbox article { margin-top:0; padding:0; }
+        </style>
+      `;
+
+      // Utilidad: reescribir URLs relativas a absolutas (clave para imágenes/links dentro del HTML del post)
+      const absolutize = (rootEl, baseAbs) => {
+        const isAbs = v => /^[a-zA-Z][a-zA-Z0-9+.-]*:/.test(v);
+        const fix = (el, attr) => {
+          const v = el.getAttribute(attr);
+          if (!v || v.startsWith('data:') || v.startsWith('blob:') || v.startsWith('#')) return;
+          if (isAbs(v)) return;
+          try { el.setAttribute(attr, new URL(v, baseAbs).toString()); } catch {}
+        };
+        rootEl.querySelectorAll('img, source, video, audio, track, a, link, script').forEach(el => {
+          if (el.tagName === 'A' || el.tagName === 'LINK') fix(el, 'href');
+          if (el.tagName === 'SCRIPT') fix(el, 'src');
+          if (el.tagName === 'IMG' || el.tagName === 'SOURCE' || el.tagName === 'VIDEO' || el.tagName === 'AUDIO' || el.tagName === 'TRACK') {
+            fix(el, 'src'); fix(el, 'srcset');
+          }
+        });
+      };
+
+      if (post.htmlUrl) {
+        // Cargar HTML externo del cliente
+        const htmlAbs = new URL(post.htmlUrl, location.href).toString();
+        const resp = await fetch(htmlAbs, { cache: 'no-store' });
+        if (!resp.ok) throw new Error(`htmlUrl HTTP ${resp.status} → ${htmlAbs}`);
+        const htmlText = await resp.text();
+
+        // Parsear y extraer porciones útiles (header + main/article; si no hay, todo el body)
+        const doc      = new DOMParser().parseFromString(htmlText, 'text/html');
+        const headerEl = doc.querySelector('header');
+        const mainEl   = doc.querySelector('main, article');
+
+        const wrapper  = document.createElement('div');
+        if (headerEl) wrapper.appendChild(headerEl.cloneNode(true));
+        if (mainEl)   wrapper.appendChild(mainEl.cloneNode(true));
+        if (!headerEl && !mainEl) wrapper.innerHTML = doc.body.innerHTML;
+
+        // Reescribe rutas relativas (clave si la imagen está como "./mi_imagen.png")
+        absolutize(wrapper, new URL('.', htmlAbs));
+
+        // Inyectar
+        shadow.innerHTML = `${lightCSS}<div class="post-sandbox">${wrapper.innerHTML}</div>`;
+
+      } else {
+        // HTML embebido en JSON
+        const wrapper = document.createElement('div');
+        wrapper.innerHTML = post.html || '<p>No hay contenido.</p>';
+
+        // Si agregas post.baseUrl en posts.json, absolutiza también embebidos:
+        if (post.baseUrl) absolutize(wrapper, new URL(post.baseUrl, location.href));
+
+        shadow.innerHTML = `${lightCSS}<div class="post-sandbox">${wrapper.innerHTML}</div>`;
+      }
+
+      // SEO mínimo (sin optional chaining en lado izquierdo)
+      (function () {
+        const tEl  = document.getElementById('t');
+        const dEl  = document.getElementById('d');
+        const ogt  = document.getElementById('ogt');
+        const ogd  = document.getElementById('ogd');
+
+        if (tEl) tEl.textContent = (post.title || 'Artículo') + ' – Portafolio';
+        if (dEl) dEl.setAttribute('content', post.excerpt || '');
+        if (ogt) ogt.setAttribute('content', post.title || '');
+        if (ogd) ogd.setAttribute('content', post.excerpt || '');
+      })();
+
+    } catch (e) {
+      console.error('Error cargando el artículo:', e);
+      titleEl.textContent = 'No se pudo cargar el artículo';
+      showError(`Detalle: <code>${(e && e.message) || e}</code>.<br>
+        Verifica: 1) que <code>assets/posts.json</code> existe y es válido, 2) que la URL tenga <code>?slug=...</code> con un valor que exista, 3) que <code>htmlUrl</code> apunte al archivo correcto (usa rutas <b>relativas</b>), 4) que estés sirviendo por HTTP (Live Server / <code>python -m http.server</code>).`);
+    }
+  })();
+  </script>
+</body>
+</html>
