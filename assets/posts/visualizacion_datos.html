@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Visualización de Datos: Técnicas y Herramientas</title>
+  <meta name="description" content="Técnicas y herramientas para representar datos de manera efectiva.">
+  <style>
+    :root{
+      --bg:#0f172a;
+      --card:#111827;
+      --text:#e5e7eb;
+      --muted:#9ca3af;
+      --accent:#22d3ee;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial;
+      background: radial-gradient(1200px 800px at 10% -10%, #0b1220 0%, var(--bg) 60%), var(--bg);
+      color:var(--text);
+      line-height:1.65;
+    }
+    header img{
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .container{
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 3rem 1.25rem 5rem;
+    }
+    h1{
+      font-size: clamp(1.8rem, 2.2vw + 1.2rem, 2.6rem);
+      line-height:1.15;
+      margin:0 0 .5rem;
+      letter-spacing:.2px;
+    }
+    .lead{
+      color:var(--muted);
+      font-size:1.05rem;
+      margin:0;
+    }
+    .meta{
+      margin-top: 1rem;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+    article{
+      background: linear-gradient(180deg, #0f172a 0%, #0b1220 100%);
+      border:1px solid #1f2937;
+      border-radius:16px;
+      padding: 2rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,.35);
+    }
+    h2, h3{
+      margin-top:2rem;
+      margin-bottom:.75rem;
+      line-height:1.25;
+    }
+    h2{font-size:1.5rem}
+    h3{font-size:1.25rem}
+    p{margin:.75rem 0}
+    ol, ul{margin:.5rem 0 0 1.25rem; padding:0}
+    li{margin:.4rem 0}
+    .tagbar{
+      display:flex; flex-wrap:wrap; gap:.5rem; margin-top:2rem
+    }
+    .tag{
+      border:1px solid #1f2937; color:#cbd5e1; padding:.35rem .6rem; border-radius:999px; font-size:.9rem;
+      background: linear-gradient(180deg, #0e1726 0%, #0b1220 100%);
+    }
+    .divider{
+      height:1px; background:linear-gradient(90deg, transparent, #1f2937, transparent); margin:1.5rem 0;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="./visualizacion_datos.png" alt="Banner de Visualización de Datos">
+  </header>
+
+  <div class="container">
+    <h1>Visualización de Datos: Técnicas y Herramientas</h1>
+    <p class="lead">Representa datos de manera efectiva para comunicar, comprender y decidir mejor.</p>
+    <div class="meta">
+      <p><strong>César Medrano Gamboa</strong><br>
+      Líder en TI y Transformación Digital | Especialista en Salud y Manufactura | BI | Automatización | Proyectos Ágiles<br>
+      <em>31 de julio de 2024</em></p>
+    </div>
+
+    <article>
+      <p>
+        En la era de la información, la cantidad de datos que generamos y consumimos a diario es abrumadora. Ya sea en el ámbito empresarial, científico o personal, la capacidad de comprender y comunicar información a través de la visualización de datos se ha convertido en una habilidad esencial. La visualización de datos no solo facilita la comprensión de patrones y tendencias, sino que también puede ser una poderosa herramienta para la toma de decisiones y la transmisión clara. En este artículo, exploraremos algunas técnicas y herramientas clave para representar datos de manera efectiva.
+      </p>
+
+      <div class="divider"></div>
+
+      <h2>La Relevancia de la Visualización de Datos</h2>
+      <p>
+        La visualización de datos es una disciplina que combina arte y ciencia para traducir datos complejos en representaciones visuales claras y significativas. Algunas de las razones por las que la visualización de datos es esencial incluyen:
+      </p>
+
+      <h3>1. Comunicación Efectiva</h3>
+      <p>
+        Las visualizaciones de datos pueden transmitir información de manera más efectiva que las tablas o informes de texto. Una imagen vale más que mil palabras, y una buena visualización puede contar una historia compleja de manera sencilla y atractiva.
+      </p>
+
+      <h3>2. Detección de Patrones</h3>
+      <p>
+        Las visualizaciones facilitan la identificación de patrones, tendencias y relaciones en los datos. Esto puede llevar a una comprensión más profunda de los problemas y a la toma de decisiones informadas.
+      </p>
+
+      <h3>3. Toma de Decisiones</h3>
+      <p>
+        Las representaciones visuales ayudan a las organizaciones y a los individuos a tomar decisiones basadas en datos. Al visualizar datos, es más fácil identificar oportunidades y desafíos.
+      </p>
+
+      <h3>4. Facilita la Interacción</h3>
+      <p>
+        Las visualizaciones interactivas permiten explorar datos de manera más profunda y personalizada, lo que puede ser valioso para investigadores, analistas y cualquier persona que trabaje con datos.
+      </p>
+
+      <div class="divider"></div>
+
+      <h2>Técnicas Clave para la Visualización de Datos</h2>
+      <h3>1. Selección de Gráficos Apropiados</h3>
+      <p>
+        Elegir el tipo de gráfico correcto es fundamental. Algunos ejemplos incluyen gráficos de barras, gráficos circulares, gráficos de dispersión y mapas de calor. La elección depende de la naturaleza de los datos y el mensaje que se desea transmitir.
+      </p>
+
+      <h3>2. Simplificación y Claridad</h3>
+      <p>
+        Mantén tus visualizaciones simples y claras. Evita el exceso de elementos decorativos y enfócate en resaltar la información esencial. Etiqueta tus ejes y utiliza colores de manera efectiva para destacar datos importantes.
+      </p>
+
+      <h3>3. Narrativa Visual</h3>
+      <p>
+        Crea una narrativa a través de tus visualizaciones. Guía a tu audiencia a través de los datos, utilizando títulos, leyendas y anotaciones para contar una historia coherente.
+      </p>
+
+      <h3>4. Interactividad</h3>
+      <p>
+        Cuando sea relevante, agrega elementos interactivos a tus visualizaciones. Esto permitirá a los usuarios explorar los datos por sí mismos y obtener información personalizada.
+      </p>
+
+      <div class="divider"></div>
+
+      <h2>Herramientas para Visualización de Datos</h2>
+      <ul>
+        <li><strong>Microsoft Excel:</strong> Ideal para visualizaciones simples y rápidas.</li>
+        <li><strong>Tableau:</strong> Ofrece potentes capacidades de visualización y análisis.</li>
+        <li><strong>Power BI:</strong> Herramienta de Microsoft para crear informes interactivos.</li>
+        <li><strong>D3.js:</strong> Biblioteca de JavaScript que brinda control completo sobre las visualizaciones.</li>
+        <li><strong>Python (Matplotlib / Seaborn):</strong> Usada para visualización científica y análisis.</li>
+        <li><strong>R (ggplot2):</strong> Popular entre analistas de datos y científicos.</li>
+        <li><strong>Google Data Studio:</strong> Ideal para paneles de control interactivos.</li>
+      </ul>
+
+      <p>
+        La elección de la herramienta dependerá de tus necesidades específicas y nivel de experiencia.
+      </p>
+
+      <div class="divider"></div>
+
+      <p>
+        En resumen, la visualización de datos es una habilidad esencial en la era de la información. La capacidad de representar datos de manera efectiva puede conducir a una comunicación más clara, una comprensión más profunda y la toma de decisiones informadas. Al elegir las técnicas y herramientas adecuadas, puedes desbloquear el poder de tus datos y aprovechar su potencial al máximo. ¡Comienza a explorar el mundo de la visualización de datos y descubre cómo puede transformar tu capacidad de comprender y comunicar información de manera efectiva!
+      </p>
+
+      <div class="tagbar">
+        <span class="tag">#VisualizaciónDeDatos</span>
+        <span class="tag">#DataViz</span>
+        <span class="tag">#AnálisisDeDatos</span>
+        <span class="tag">#BI</span>
+        <span class="tag">#TransformaciónDigital</span>
+        <span class="tag">#TomaDeDecisiones</span>
+      </div>
+    </article>
+  </div>
+</body>
+</html>

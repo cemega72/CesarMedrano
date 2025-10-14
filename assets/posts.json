@@ -1,0 +1,27 @@
+[
+  {
+    "slug": "b1",
+    "title": "Analítica de Salud: Transformando la Medicina y la Atención Médica a Través de los Datos",
+    "date": "2024-09-30",
+    "category": "Analítica",
+    "excerpt": "Durante la última década, un aumento masivo del conocimiento sobre la salud ha dado lugar a nuevas formas de mejorar la atención y el tratamiento de la salud en general. Los analistas de salud están cambiando la forma en que las organizaciones y los servicios de atención médica toman decisiones, diagnostican enfermedades y mejoran los recursos. Este artículo explora cómo el análisis de datos puede beneficiar a la medicina y la salud y hacia dónde se dirige este apasionante campo.",
+    "html": "<p>Exploramos</p>",
+    "htmlUrl": "assets/posts/analitica_salud.html"
+  },
+  {
+    "slug": "b2",
+    "title": "Visualización de Datos: Técnicas y herramientas para representar datos de manera efectiva",
+    "date": "2024-07-31",
+    "excerpt": "En la era de la información, la cantidad de datos que generamos y consumimos a diario es abrumadora. Ya sea en el ámbito empresarial, científico o personal, la capacidad de comprender y comunicar información a través de la visualización de datos se ha convertido en una habilidad esencial. La visualización de datos no solo facilita la comprensión de patrones y tendencias, sino que también puede ser una poderosa herramienta para la toma de decisiones y la transmisión clara. En este artículo, exploraremos algunas técnicas y herramientas clave para representar datos de manera efectiva.",
+    "html": "<p>Se usa un html</p>",
+    "htmlUrl": "assets/posts/visualizacion_datos.html"
+  },
+  {
+    "slug": "b3",
+    "title": "Aprendizaje Automático: Aplicaciones y Algoritmos para Predecir, Clasificar y Tomar Decisiones Basadas en Datos",
+    "date": "2024-06-06",
+    "excerpt": "En el mundo empresarial moderno, el aprendizaje automático (machine learning) se ha convertido en una herramienta crucial para transformar la manera en que las organizaciones operan y toman decisiones. Esta disciplina, que forma parte de la inteligencia artificial (IA), se basa en la capacidad de las máquinas para aprender de los datos y hacer predicciones o decisiones sin ser programadas explícitamente para cada tarea. En este artículo, exploraremos las aplicaciones y algoritmos del aprendizaje automático que están revolucionando diversas industrias.",
+    "html": "<p>Exploramos</p>",
+    "htmlUrl": "assets/posts/aprendizaje-automatico.html"
+  }
+]

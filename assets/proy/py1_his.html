@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Proyecto · HIS Integral</title>
+  <meta name="description" content="Sistema HIS integral: Gestión clínica, interoperabilidad HL7, TEDEF, automatización de procesos en salud.">
+  <style>
+    :root{
+      --bg:#0f172a;        /* fondo brand */
+      --panel:#0b1220;     /* panel gradiente */
+      --card:#111827;      /* tarjetas */
+      --stroke:#1f2937;    /* bordes */
+      --text:#e5e7eb;      /* texto principal */
+      --muted:#9ca3af;     /* texto secundario */
+      --accent:#22d3ee;    /* cian brand */
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,"Helvetica Neue",Arial;
+      background: radial-gradient(1200px 800px at 10% -10%, #0b1220 0%, var(--bg) 60%), var(--bg);
+      color:var(--text);
+      line-height:1.65;
+    }
+
+    /* Header */
+    .site-header{
+      position:sticky; top:0; z-index:10;
+      backdrop-filter: blur(8px);
+      background: color-mix(in oklab, #0b1220 65%, transparent);
+      border-bottom:1px solid var(--stroke);
+    }
+    .wrap{max-width: 1080px; margin:0 auto; padding: .9rem 1rem; display:flex; align-items:center; justify-content:space-between;}
+    .brand{font-weight:800; letter-spacing:.2px}
+    nav a{color:var(--muted); text-decoration:none; margin-left:1rem; font-size:.95rem}
+    nav a:hover{color:var(--text)}
+
+    /* Layout */
+    .container{max-width: 1080px; margin:0 auto; padding: 2rem 1rem 4rem}
+    .grid{display:grid; grid-template-columns:repeat(12,1fr); gap:1rem}
+    .col-6{grid-column:span 6}
+    @media (max-width: 860px){ .col-6{grid-column:span 12} }
+
+    /* Cards & tokens */
+    .card{
+      background: linear-gradient(180deg, var(--card) 0%, var(--panel) 100%);
+      border:1px solid var(--stroke);
+      border-radius:16px;
+      padding:1.25rem 1.3rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,.35);
+      margin-bottom:1rem;
+    }
+    .badge{
+      display:inline-block; padding:.25rem .6rem; border-radius:999px; font-size:.8rem;
+      color:#cbd5e1; border:1px solid var(--stroke); background:linear-gradient(180deg,#0e1726 0%, #0b1220 100%);
+    }
+    h1{font-size: clamp(1.6rem, 1.6rem + 1.2vw, 2.4rem); margin:.35rem 0 .25rem; line-height:1.15}
+    h2{font-size:1.35rem; margin:.1rem 0 .6rem}
+    h3{font-size:1.1rem; margin:1rem 0 .35rem}
+    p{margin:.55rem 0}
+    ul{margin:.25rem 0 .25rem 1.25rem}
+    li{margin:.35rem 0}
+    .muted{color:var(--muted)}
+    .divider{height:1px; background:linear-gradient(90deg, transparent, var(--stroke), transparent); margin:1.25rem 0}
+
+    /* Image */
+    .img{width:100%; height:auto; display:block; border-radius:14px; box-shadow:0 12px 28px rgba(0,0,0,.35); border:1px solid var(--stroke)}
+    code{background: #0c1424; padding:.12rem .4rem; border-radius:6px; border:1px solid var(--stroke); color:#cbd5e1}
+    footer{border-top:1px solid var(--stroke); background: color-mix(in oklab, var(--panel) 88%, transparent)}
+    .footwrap{max-width:1080px; margin:0 auto; padding:1rem; color:var(--muted); font-size:.95rem}
+    a{color:var(--accent); text-decoration:none} a:hover{text-decoration:underline}
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="site-header">
+    <div class="wrap">
+      <div class="brand">Portafolio · César Medrano Gamboa</div>
+      <nav>
+        <a href="#objetivo">Objetivo</a>
+        <a href="#tecnologias">Tecnologías</a>
+        <a href="#resultados">Resultados</a>
+        <a href="#visual">Visual</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main class="container">
+    <section class="card">
+      <span class="badge">Proyecto</span>
+      <h1>Sistema HIS Integral</h1>
+      <p class="muted">Rol: <strong>Jefe de Desarrollo de Sistemas · Líder de Proyecto</strong> · Periodo: <strong>2012 – 2020</strong></p>
+    </section>
+
+    <section id="objetivo" class="card">
+      <h2>Objetivo</h2>
+      <p>Diseñar e implementar un <strong>HIS modular</strong> para integrar atención, farmacia, laboratorio, imágenes y facturación, logrando <strong>automatizar &gt;90% de procesos</strong> y mejorar tiempos y costos de atención.</p>
+    </section>
+
+    <section id="tecnologias" class="card">
+      <h2>Tecnologías usadas</h2>
+      <div class="grid">
+        <div class="col-6">
+          <h3>Aplicaciones e Integraciones</h3>
+          <ul>
+            <li>VB, .NET, Servicios SOAP</li>
+            <li>Interoperabilidad <strong>HL7</strong></li>
+            <li>TEDEF (facturación electrónica en salud)</li>
+            <li>UML, <strong>BPMN 2.0</strong> para modelado de procesos</li>
+          </ul>
+        </div>
+        <div class="col-6">
+          <h3>Datos y Gestión</h3>
+          <ul>
+            <li>SQL Server (procedimientos almacenados, SSIS/SSRS)</li>
+            <li>Gestión de proyectos: PMBOK, MS Project (Gantt), Scrum, Kanban</li>
+            <li>Matriz de riesgos, control de cambios</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="resultados" class="card">
+      <h2>Resultados clave</h2>
+      <ul>
+        <li>Interoperabilidad total entre módulos clínicos y facturación.</li>
+        <li>Reducción de tiempos de atención y costos administrativos.</li>
+        <li>Mejor trazabilidad del paciente en todo el ciclo asistencial.</li>
+      </ul>
+    </section>
+
+    <section id="visual" class="card">
+      <h2></h2>
+      <p class="muted"></p>
+      <img class="img" src="./his_dashboard.png" alt="Dashboard HIS">
+      <!-- <div class="muted" style="margin-top:.5rem; font-size:.9rem">Ruta esperada: <code>./his_dashboard.png</code></div> -->
+    </section>
+
+    <div class="muted" style="margin-top:1rem; font-size:.9rem">Última actualización: 2025-10-12</div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footwrap">
+      © 2025 César Medrano Gamboa · Transformación Digital & Analítica
+    </div>
+  </footer>
+</body>
+</html>

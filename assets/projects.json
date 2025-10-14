@@ -1,0 +1,32 @@
+[
+  {
+    "slug": "p1",
+    "title": "Sistema HIS Integral",
+    "desc": "Interoperabilidad con aseguradoras y aumento del 45 % en eficiencia operativa..",
+    "icon": "cloud",
+    "tags": ["SQL", "VB", "UML"],
+    "image": "",
+    "html": "<p>Diseñé, desarrollé y lideré la implementación de un sistema HIS (Hospital Information System) modular que integró más de 10 procesos críticos hospitalarios (atención, farmacia, laboratorio, imágenes, facturación y TEDEF). El proyecto permitió automatizar más del 90 % de los procesos operativos de la clínica, reduciendo tiempos de atención y costos administrativos.</p>",
+    "htmlUrl": "assets/proy/py1_his.html"
+  },
+  {
+    "slug": "p2",
+    "title": "Proyecto TEDEF",
+    "desc": "Reducción de tiempos en la transmisión de los expedientes a las aseguradoras de 15 días a 48 horas.",
+    "icon": "mobile-screen-button",
+    "tags": ["BPMN", "Python", "AppSheet"],
+    "image": "",
+    "html": "<p>Diseñé e implementé una solución de integración para transmisión de facturación electrónica TEDEF entre clínicas privadas y SUSALUD, asegurando cumplimiento normativo y eficiencia en el ciclo de transmisión de facturas.</p>",
+    "htmlUrl": "assets/proy/py2_tedef.html"
+  },
+  {
+    "slug": "p3",
+    "title": "Dashboard Analytics",
+    "desc": "Aumento del 60 % en la visibilidad y toma de decisiones basadas en datos en áreas asistenciales y administrativas.",
+    "icon": "chart-line",
+    "tags": ["SQL", "Power BI", "SQL"],
+    "image": "",
+    "html": "<p>Diseñé y desarrollé dashboards para monitorear indicadores asistenciales y operativos (tiempos de atención, ocupación de camas, flujo de pacientes y costos operativos).</p>",
+    "htmlUrl": "assets/proy/py3_dashboards.html"
+  }
+]
