@@ -5,12 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title id="meta-title">César Medrano Gamboa – Ingeniero de Sistemas Empresariales</title>
   <meta id="meta-desc" name="description" content="Portafolio de César Medrano Gamboa: transformación digital, gestión de proyectos" />
-  <link id="meta-favicon" rel="icon" href="assets/favicon.ico" />
+  <link id="meta-favicon" rel="icon" href="/assets/favicon.ico" />
   <meta id="og-title" property="og:title" content="César Medrano Gamboa – Portafolio" />
   <meta id="og-desc" property="og:description" content="Transformación digital, Gestión de Proyectos y analytics." />
   <meta property="og:type" content="website" />
   <meta id="og-url" property="og:url" content="https://www.mrtechshops.com" />
-  <meta id="og-image" property="og:image" content="assets/og-image.jpg" />
+  <meta id="og-image" property="og:image" content="/assets/og-image.jpg" />
 
   <script src="https://cdn.tailwindcss.com"></script>
   
@@ -22,7 +22,7 @@
     :root{ 
       --nav-h:64px; --brand:#2563eb; --brand-dark:#1d4ed8; --brand-secondary:#1e40af; --brand-accent:#0ea5e9; 
       /* valor por defecto si no hay data-hero-bg */
-      --hero-bg: url('assets/hero/placeholder.png');
+      --hero-bg: url('/assets/hero/placeholder.png');
     }
     section { scroll-margin-top: var(--nav-h); }
     .card-hover { transition: transform .3s ease, box-shadow .3s ease; }
@@ -72,7 +72,7 @@
   data-brand-dark="#1d4ed8"
   data-brand-secondary="#1e40af"
   data-brand-accent="#0ea5e9"
-  data-name="César Medrano Gamboa"
+  data-name="Ing° César Medrano Gamboa"
   data-role="Ingeniero de Sistemas & Gestión de proyectos"
   data-email="cesarmedranog@hotmail.com"
   data-phone="+51 999 765 280"
@@ -81,46 +81,59 @@
   data-github="https://github.com/cemega72"
   data-twitter="https://twitter.com/cemega72"
   data-og-url="https://mrtechshops.com"
-  data-og-image="assets/og-image.jpg"
-  data-favicon="assets/favicon.ico"
+  data-og-image="/assets/og-image.jpg"
+  data-favicon="/assets/favicon.ico"
   data-formspree="https://formspree.io/f/your_form_id"
   data-recaptcha="YOUR_RECAPTCHA_SITE_KEY"
-  data-avatar="assets/profile-pic.png"
-  data-hero-bg="assets/hero/office-clean.png"
+  data-avatar="/assets/profile-pic.png"
+  data-hero-bg="/assets/hero/office-clean.png"
 >
   <a href="#inicio" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 bg-white text-[color:var(--brand)] px-3 py-2 rounded">Saltar al contenido</a>
 
-  <!-- Navbar -->
-  <nav class="backdrop-blur bg-white/90 border-b border-gray-200 fixed w-full top-0 z-50" role="navigation" aria-label="Principal">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex justify-between h-16">
-        <div class="flex items-center">
-          <h1 class="text-xl md:text-2xl font-bold text-gray-900" id="nav-name">Liderazgo en T.I.</h1>
-        </div>
-        <div class="hidden md:flex items-center gap-8">
-          <a href="#inicio" class="nav-link text-gray-700 hover:text-[color:var(--brand)]">Inicio</a>
-          <a href="#sobre-mi" class="nav-link text-gray-700 hover:text-[color:var(--brand)]">Sobre mí</a>
-          <a href="#proyectos" class="nav-link text-gray-700 hover:text-[color:var(--brand)]">Proyectos</a>
-          <a href="#blog" class="nav-link text-gray-700 hover:text-[color:var(--brand)]">Blog</a>
-          <a href="#contacto" class="nav-link text-gray-700 hover:text-[color:var(--brand)]">Contacto</a>
-        </div>
-        <div class="md:hidden flex items-center">
-          <button id="mobile-menu-btn" class="text-gray-700 hover:text-[color:var(--brand)]" aria-controls="mobile-menu" aria-expanded="false" aria-label="Abrir menú">
-            <i class="fas fa-bars text-xl"></i>
-          </button>
-        </div>
+<!-- Navbar -->
+<nav class="backdrop-blur bg-white/90 border-b border-gray-200 fixed w-full top-0 z-50" role="navigation" aria-label="Principal">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between h-16">
+      <div class="flex items-center">
+        <h1 class="text-xl md:text-2xl font-bold text-gray-900" id="nav-name">Ing° César Medrano Gamboa</h1>
+      </div>
+      <!-- Menú desktop -->
+      <div class="hidden md:flex items-center gap-8">
+        <a href="#inicio" class="nav-link text-gray-700 hover:text-[color:var(--brand)]">Inicio</a>
+        <a href="#sobre-mi" class="nav-link text-gray-700 hover:text-[color:var(--brand)]">Sobre mí</a>
+        <a href="#proyectos" class="nav-link text-gray-700 hover:text-[color:var(--brand)]">Proyectos</a>
+        <a href="#blog" class="nav-link text-gray-700 hover:text-[color:var(--brand)]">Blog</a>
+        <a href="#contacto" class="nav-link text-gray-700 hover:text-[color:var(--brand)]">Contacto</a>
+      </div>
+      <!-- Botón móvil -->
+      <div class="md:hidden flex items-center">
+        <button id="mobile-menu-btn"
+                class="text-gray-700 hover:text-[color:var(--brand)]"
+                aria-controls="mobile-menu"
+                aria-expanded="false"
+                aria-label="Abrir menú">
+          <i class="fas fa-bars text-xl"></i>
+        </button>
       </div>
     </div>
-    <div id="mobile-menu" class="md:hidden hidden bg-white border-t border-gray-200" role="menu">
-      <div class="px-2 pt-2 pb-3 space-y-1">
-        <a href="#inicio" class="block px-3 py-2 text-gray-700 hover:text-[color:var(--brand)]">Inicio</a>
-        <a href="#sobre-mi" class="block px-3 py-2 text-gray-700 hover:text-[color:var(--brand)]">Sobre mí</a>
-        <a href="#proyectos" class="block px-3 py-2 text-gray-700 hover:text-[color:var(--brand)]">Proyectos</a>
-        <a href="#blog" class="block px-3 py-2 text-gray-700 hover:text-[color:var(--brand)]">Blog</a>
-        <a href="#contacto" class="block px-3 py-2 text-gray-700 hover:text-[color:var(--brand)]">Contacto</a>
-      </div>
+  </div>
+
+  <!-- Menú móvil (fixed, visible bajo la barra) -->
+  <div id="mobile-menu"
+       class="md:hidden hidden fixed top-16 inset-x-0
+              bg-white border-b border-gray-200 shadow-lg z-50
+              max-h-[calc(100vh-4rem)] overflow-y-auto"
+       role="menu" aria-labelledby="mobile-menu-btn">
+    <div class="px-2 pt-2 pb-3 space-y-1">
+      <a href="#inicio"     class="block px-3 py-2 text-gray-700 hover:text-[color:var(--brand)]">Inicio</a>
+      <a href="#sobre-mi"   class="block px-3 py-2 text-gray-700 hover:text-[color:var(--brand)]">Sobre mí</a>
+      <a href="#proyectos"  class="block px-3 py-2 text-gray-700 hover:text-[color:var(--brand)]">Proyectos</a>
+      <a href="#blog"       class="block px-3 py-2 text-gray-700 hover:text-[color:var(--brand)]">Blog</a>
+      <a href="#contacto"   class="block px-3 py-2 text-gray-700 hover:text-[color:var(--brand)]">Contacto</a>
     </div>
-  </nav>
+  </div>
+</nav>
+
 
   <!-- Hero -->
   <!-- <section id="inicio" class="min-h-screen pt-16 brand-gradient text-white flex items-center">
@@ -136,7 +149,7 @@
             size-24 sm:size-28 md:size-32 lg:size-40 xl:size-48"            
             loading="lazy" decoding="async">
           
-      <h2 id="hero-name" class="text-4xl md:text-6xl font-extrabold tracking-tight">César Medrano Gamboa</h2>
+      <h2 id="hero-name" class="text-4xl md:text-6xl font-extrabold tracking-tight">Liderazgo en T.I.</h2>
       <p id="hero-role" class="text-xl md:text-2xl mt-4 text-indigo-100">Ingeniero de Sistemas Empresariales</p>
       
       <p class="mt-6 max-w-3xl mx-auto text-indigo-50">Gestión de proyectos, analítica aplicada al sector salud y empresa. Transformo ideas en soluciones medibles.</p>
@@ -502,13 +515,21 @@
     // Año dinámico
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Menú móvil
+    // Toggle menú móvil + accesibilidad
     const mobileBtn = document.getElementById('mobile-menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
+
     mobileBtn?.addEventListener('click', () => {
-      const expanded = mobileBtn.getAttribute('aria-expanded') === 'true';
-      mobileBtn.setAttribute('aria-expanded', String(!expanded));
-      mobileMenu.classList.toggle('hidden');
+      const isHidden = mobileMenu.classList.toggle('hidden');
+      mobileBtn.setAttribute('aria-expanded', String(!isHidden));
+    });
+
+    // Cerrar el menú al navegar a una sección
+    mobileMenu?.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+        mobileBtn.setAttribute('aria-expanded', 'false');
+      });
     });
 
     // Scroll suave
