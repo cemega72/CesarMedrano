@@ -5,24 +5,36 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title id="meta-title">César Medrano Gamboa – Ingeniero de Sistemas Empresariales</title>
   <meta id="meta-desc" name="description" content="Portafolio de César Medrano Gamboa: transformación digital, gestión de proyectos" />
-  <link id="meta-favicon" rel="icon" href="/assets/favicon.ico" />
+
+  <!-- Open Graph -->
   <meta id="og-title" property="og:title" content="César Medrano Gamboa – Portafolio" />
   <meta id="og-desc" property="og:description" content="Transformación digital, Gestión de Proyectos y analytics." />
+  <meta id="og-url"  property="og:url" content="https://cemega72.github.io/CesarMedrano/" />
+  <meta id="og-image" property="og:image" content="assets/og-image.jpg" />
   <meta property="og:type" content="website" />
-  <meta id="og-url" property="og:url" content="https://www.mrtechshops.com" />
-  <meta id="og-image" property="og:image" content="/assets/office-clean.png" />
 
+  <!-- Favicon -->
+  <link id="meta-favicon" rel="icon" href="assets/favicon.ico" />
+
+  <!-- Preload hero background (mejora LCP) -->
+  <link rel="preload" as="image" href="assets/hero/office-clean.png" />
+
+  <!-- Tailwind + FontAwesome -->
   <script src="https://cdn.tailwindcss.com"></script>
-  
-  <link rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
-      crossorigin="anonymous" referrerpolicy="no-referrer">      
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        rel="stylesheet"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
   <style>
-    :root{ 
-      --nav-h:64px; --brand:#2563eb; --brand-dark:#1d4ed8; --brand-secondary:#1e40af; --brand-accent:#0ea5e9; 
-      /* valor por defecto si no hay data-hero-bg */
-      --hero-bg: url('/assets/hero/placeholder.png');
+    :root{
+      --nav-h:64px;
+      --brand:#2563eb;
+      --brand-dark:#1d4ed8;
+      --brand-secondary:#1e40af;
+      --brand-accent:#0ea5e9;
+      /* importante: ruta relativa para GitHub Pages */
+      --hero-bg: url('assets/hero/office-clean.png');
     }
     section { scroll-margin-top: var(--nav-h); }
     .card-hover { transition: transform .3s ease, box-shadow .3s ease; }
@@ -31,136 +43,123 @@
     .tech-badge:hover { transform: scale(1.04); }
     .brand-gradient{ background: linear-gradient(135deg, var(--brand) 0%, var(--brand-secondary) 100%); }
 
-    /* Capa de imagen de fondo */
+    /* Hero con imagen de fondo + overlay */
     .hero-with-bg{ position: relative; overflow: hidden; }
     .hero-with-bg::before{
-      content: "";
-      position: absolute; inset: 0;
+      content:""; position:absolute; inset:0;
       background-image: var(--hero-bg);
-      background-size: cover;
-      background-position: center;
-      transform: scale(1.02);           /* leve zoom para evitar bordes en móviles */
+      background-size: cover; background-position: center;
+      transform: scale(1.02);
       filter: saturate(1.05) contrast(1.05);
-      z-index: 0;
+      z-index:0;
     }
-
-    /* Capa de overlay (deja el brand como velo para legibilidad) */
     .hero-with-bg::after{
-      content: "";
-      position: absolute; inset: 0;
-      /* gradiente usando tus colores de marca */
+      content:""; position:absolute; inset:0;
       background: linear-gradient(135deg, var(--brand) 0%, var(--brand-secondary) 100%);
-      opacity: .65;                      /* ajusta la opacidad a tu gusto (0.5–0.75) */
-      z-index: 1;
+      opacity:.65; z-index:1;
     }
+    .hero-with-bg > *{ position:relative; z-index:2; }
 
-    /* Asegura que el contenido quede sobre las capas anteriores */
-    .hero-with-bg > *{ position: relative; z-index: 2; }
-
+    /* Respeta preferencias de movimiento del usuario */
+    @media (prefers-reduced-motion: reduce) {
+      .card-hover:hover{ transform:none; }
+      .hero-with-bg::before{ transform:none; }
+    }
   </style>
 </head>
 
-<style>
-@media (prefers-reduced-motion: reduce) {
-  .card-hover { transition: none !important; }
-}
-</style>
-
 <body id="site"
   class="bg-gray-50 text-gray-800"
-  data-brand="#063970"  
+
+  data-brand="#063970"
   data-brand-dark="#1d4ed8"
   data-brand-secondary="#1e40af"
   data-brand-accent="#0ea5e9"
-  data-name="Ing° César Medrano Gamboa"
+
+  data-name="César Medrano Gamboa"
   data-role="Ingeniero de Sistemas & Gestión de proyectos"
   data-email="cesarmedranog@hotmail.com"
   data-phone="+51 999 765 280"
   data-location="Lima, Perú"
+
   data-linkedin="https://www.linkedin.com/in/cesarmedranogamboa/"
   data-github="https://github.com/cemega72"
   data-twitter="https://twitter.com/cemega72"
-  data-og-url="https://mrtechshops.com"
-  data-og-image="/assets/og-image.jpg"
-  data-favicon="/assets/favicon.ico"
+
+  data-og-url="https://cemega72.github.io/CesarMedrano/"
+  data-og-image="assets/og-image.jpg"
+  data-favicon="assets/favicon.ico"
+
   data-formspree="https://formspree.io/f/your_form_id"
   data-recaptcha="6LfDhesrAAAAAPlLDwrquJuP98s3v4bFtmfLPP0P"
-  data-avatar="/assets/profile-pic.png"
-  data-hero-bg="/assets/hero/office-clean.png"
+
+  data-avatar="assets/profile-pic.png"
+  data-hero-bg="assets/hero/office-clean.png"
 >
   <a href="#inicio" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 bg-white text-[color:var(--brand)] px-3 py-2 rounded">Saltar al contenido</a>
 
-<!-- Navbar -->
-<nav class="backdrop-blur bg-white/90 border-b border-gray-200 fixed w-full top-0 z-50" role="navigation" aria-label="Principal">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex justify-between h-16">
-      <div class="flex items-center">
-        <h1 class="text-xl md:text-2xl font-bold text-gray-900" id="nav-name">Ing° César Medrano Gamboa</h1>
-      </div>
-      <!-- Menú desktop -->
-      <div class="hidden md:flex items-center gap-8">
-        <a href="#inicio" class="nav-link text-gray-700 hover:text-[color:var(--brand)]">Inicio</a>
-        <a href="#sobre-mi" class="nav-link text-gray-700 hover:text-[color:var(--brand)]">Sobre mí</a>
-        <a href="#proyectos" class="nav-link text-gray-700 hover:text-[color:var(--brand)]">Proyectos</a>
-        <a href="#blog" class="nav-link text-gray-700 hover:text-[color:var(--brand)]">Blog</a>
-        <a href="#contacto" class="nav-link text-gray-700 hover:text-[color:var(--brand)]">Contacto</a>
-      </div>
-      <!-- Botón móvil -->
-      <div class="md:hidden flex items-center">
-        <button id="mobile-menu-btn"
-                class="text-gray-700 hover:text-[color:var(--brand)]"
-                aria-controls="mobile-menu"
-                aria-expanded="false"
-                aria-label="Abrir menú">
-          <i class="fas fa-bars text-xl"></i>
-        </button>
+  <!-- Navbar -->
+  <nav class="backdrop-blur bg-white/90 border-b border-gray-200 fixed w-full top-0 z-50" role="navigation" aria-label="Principal">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-16">
+        <div class="flex items-center">
+          <h1 class="text-xl md:text-2xl font-bold text-gray-900" id="nav-name">Ing° César Medrano Gamboa</h1>
+        </div>
+        <!-- Menú desktop -->
+        <div class="hidden md:flex items-center gap-8">
+          <a href="#inicio" class="nav-link text-gray-700 hover:text-[color:var(--brand)]">Inicio</a>
+          <a href="#sobre-mi" class="nav-link text-gray-700 hover:text-[color:var(--brand)]">Sobre mí</a>
+          <a href="#proyectos" class="nav-link text-gray-700 hover:text-[color:var(--brand)]">Proyectos</a>
+          <a href="#blog" class="nav-link text-gray-700 hover:text-[color:var(--brand)]">Blog</a>
+          <a href="#contacto" class="nav-link text-gray-700 hover:text-[color:var(--brand)]">Contacto</a>
+        </div>
+        <!-- Botón móvil -->
+        <div class="md:hidden flex items-center">
+          <button id="mobile-menu-btn" class="text-gray-700 hover:text-[color:var(--brand)]"
+                  aria-controls="mobile-menu" aria-expanded="false" aria-label="Abrir menú">
+            <i class="fas fa-bars text-xl"></i>
+          </button>
+        </div>
       </div>
     </div>
-  </div>
 
-  <!-- Menú móvil (fixed, visible bajo la barra) -->
-  <div id="mobile-menu"
-       class="md:hidden hidden fixed top-16 inset-x-0
-              bg-white border-b border-gray-200 shadow-lg z-50
-              max-h-[calc(100vh-4rem)] overflow-y-auto"
-       role="menu" aria-labelledby="mobile-menu-btn">
-    <div class="px-2 pt-2 pb-3 space-y-1">
-      <a href="#inicio"     class="block px-3 py-2 text-gray-700 hover:text-[color:var(--brand)]">Inicio</a>
-      <a href="#sobre-mi"   class="block px-3 py-2 text-gray-700 hover:text-[color:var(--brand)]">Sobre mí</a>
-      <a href="#proyectos"  class="block px-3 py-2 text-gray-700 hover:text-[color:var(--brand)]">Proyectos</a>
-      <a href="#blog"       class="block px-3 py-2 text-gray-700 hover:text-[color:var(--brand)]">Blog</a>
-      <a href="#contacto"   class="block px-3 py-2 text-gray-700 hover:text-[color:var(--brand)]">Contacto</a>
+    <!-- Menú móvil (fixed, visible bajo la barra) -->
+    <div id="mobile-menu"
+         class="md:hidden hidden fixed top-16 inset-x-0
+                bg-white border-b border-gray-200 shadow-lg z-50
+                max-h-[calc(100vh-4rem)] overflow-y-auto"
+         role="menu" aria-labelledby="mobile-menu-btn">
+      <div class="px-2 pt-2 pb-3 space-y-1">
+        <a href="#inicio"     class="block px-3 py-2 text-gray-700 hover:text-[color:var(--brand)]">Inicio</a>
+        <a href="#sobre-mi"   class="block px-3 py-2 text-gray-700 hover:text-[color:var(--brand)]">Sobre mí</a>
+        <a href="#proyectos"  class="block px-3 py-2 text-gray-700 hover:text-[color:var(--brand)]">Proyectos</a>
+        <a href="#blog"       class="block px-3 py-2 text-gray-700 hover:text-[color:var(--brand)]">Blog</a>
+        <a href="#contacto"   class="block px-3 py-2 text-gray-700 hover:text-[color:var(--brand)]">Contacto</a>
+      </div>
     </div>
-  </div>
-</nav>
-
+  </nav>
 
   <!-- Hero -->
-  <!-- <section id="inicio" class="min-h-screen pt-16 brand-gradient text-white flex items-center">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center"> -->
   <section id="inicio" class="min-h-screen pt-16 brand-gradient text-white flex items-center hero-with-bg">
-    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
-      <!-- Solo la foto (sin el ícono) -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
       <img id="hero-avatar"
          src=""
          alt="César Medrano Gamboa"
-         width="128" height="128"                  
+         width="128" height="128"
          class="block mx-auto rounded-full object-cover ring-1 ring-white/30 mb-6
-            size-24 sm:size-28 md:size-32 lg:size-40 xl:size-48"            
-            loading="lazy" decoding="async">
-          
-      <h2 id="hero-name" class="text-4xl md:text-6xl font-extrabold tracking-tight">Liderazgo en T.I.</h2>
+                size-24 sm:size-28 md:size-32 lg:size-40 xl:size-48"
+         loading="lazy" decoding="async">
+      <h2 id="hero-name" class="text-4xl md:text-6xl font-extrabold tracking-tight">César Medrano Gamboa</h2>
       <p id="hero-role" class="text-xl md:text-2xl mt-4 text-indigo-100">Ingeniero de Sistemas Empresariales</p>
-      
       <p class="mt-6 max-w-3xl mx-auto text-indigo-50">Gestión de proyectos, analítica aplicada al sector salud y empresa. Transformo ideas en soluciones medibles.</p>
-      <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">                
+      <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
         <a href="#proyectos" class="border-2 border-white text-white font-semibold px-8 py-3 rounded-lg hover:bg-white hover:text-[color:var(--brand)]">Ver proyectos</a>
         <a href="#contacto" class="border-2 border-white text-white font-semibold px-8 py-3 rounded-lg hover:bg-white hover:text-[color:var(--brand)]">Contactar</a>
       </div>
     </div>
   </section>
 
-  <!-- Sobre mí (resumido) -->
+  <!-- Sobre mí -->
   <section id="sobre-mi" class="py-20 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-14">
@@ -178,23 +177,21 @@
           </ul>
         </div>
         <div>
-          
-        <h4 class="text-2xl font-bold mb-5">Metodologías y Tecnologías</h4>
-        <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
-          <div class="tech-badge text-white p-4 rounded-lg text-center"><i class="fab fa-python text-2xl mb-2"></i><p class="font-semibold">Python</p></div>
-          <div class="tech-badge text-white p-4 rounded-lg text-center"><i class="fab fa-code text-2xl mb-2"></i><p class="font-semibold">VB</p></div>
-          <div class="tech-badge text-white p-4 rounded-lg text-center"><i class="fab fa-chart-pie text-2xl mb-2"></i><p class="font-semibold">Power BI</p></div>
-          <div class="tech-badge text-white p-4 rounded-lg text-center"><i class="fab fa-robot text-2xl mb-2"></i><p class="font-semibold">AppSheet</p></div>
-          <div class="tech-badge text-white p-4 rounded-lg text-center"><i class="fab fa-diagram-project text-2xl mb-2"></i><p class="font-semibold">PMBOK</p></div>
-          <div class="tech-badge text-white p-4 rounded-lg text-center"><i class="fa-solid fa-database text-2xl mb-2"></i><p class="font-semibold">SQL</p></div>
-        </div>
-
+          <h4 class="text-2xl font-bold mb-5">Tecnologías</h4>
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+            <div class="tech-badge text-white p-4 rounded-lg text-center"><i class="fa-brands fa-python text-2xl mb-2" aria-hidden="true"></i><p class="font-semibold">Python</p></div>
+            <div class="tech-badge text-white p-4 rounded-lg text-center"><i class="fa-solid fa-code text-2xl mb-2" aria-hidden="true"></i><p class="font-semibold">VB</p></div>
+            <div class="tech-badge text-white p-4 rounded-lg text-center"><i class="fa-solid fa-chart-pie text-2xl mb-2" aria-hidden="true"></i><p class="font-semibold">Power BI</p></div>
+            <div class="tech-badge text-white p-4 rounded-lg text-center"><i class="fa-solid fa-mobile-screen-button text-2xl mb-2" aria-hidden="true"></i><p class="font-semibold">AppSheet</p></div>
+            <div class="tech-badge text-white p-4 rounded-lg text-center"><i class="fa-solid fa-diagram-project text-2xl mb-2" aria-hidden="true"></i><p class="font-semibold">PMBOK</p></div>
+            <div class="tech-badge text-white p-4 rounded-lg text-center"><i class="fa-solid fa-database text-2xl mb-2" aria-hidden="true"></i><p class="font-semibold">SQL</p></div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Proyectos -->
+  <!-- Proyectos (resumen) -->
   <section id="proyectos" class="py-20 bg-gray-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-14">
@@ -244,7 +241,7 @@
           <a href="project.html?slug=p1"
             class="absolute inset-0 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[color:var(--brand)]"
             aria-labelledby="proj1">
-            <span class="sr-only">Ir a “Sistema de Gestión Cloud”</span>
+            <span class="sr-only">Ir a “Sistema HIS Integral”</span>
           </a>
         </article>
 
@@ -288,7 +285,7 @@
           <a href="project.html?slug=p2"
             class="absolute inset-0 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[color:var(--brand)]"
             aria-labelledby="proj2">
-            <span class="sr-only">Ir a “Sistema de Gestión Cloud”</span>
+            <span class="sr-only">Ir a “Proyecto TEDEF”</span>
           </a>
         </article>
 
@@ -331,19 +328,19 @@
           <a href="project.html?slug=p3"
             class="absolute inset-0 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[color:var(--brand)]"
             aria-labelledby="proj3">
-            <span class="sr-only">Ir a “Sistema de Gestión Cloud”</span>
+            <span class="sr-only">Ir a “Dashboard Analytics”</span>
           </a>
         </article>
+        
       </div>
 
       <div class="text-center mt-12">
-          <a href="projects.html" class="inline-block bg-[color:var(--brand)] text-white px-8 py-3 rounded-lg font-semibold hover:bg-[color:var(--brand-dark)]">Ver todos los proyectos</a>
+        <a href="projects.html" class="inline-block bg-[color:var(--brand)] text-white px-8 py-3 rounded-lg font-semibold hover:bg-[color:var(--brand-dark)]">Ver todos los proyectos</a>
       </div>
-
     </div>
   </section>
 
-  <!-- Blog (resumido) -->
+  <!-- Blog (resumen) -->
   <section id="blog" class="py-20 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-14">
@@ -416,12 +413,13 @@
           <div class="mt-8">
             <h5 class="text-lg font-semibold mb-3">Sígueme</h5>
             <div id="social-links" class="flex gap-4">
-              <a id="link-linkedin" href="#" class="text-gray-300 hover:text-blue-400" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin text-2xl"></i></a>
-              <a id="link-github" href="#" class="text-gray-300 hover:text-blue-400" aria-label="GitHub" target="_blank" rel="noopener noreferrer"><i class="fab fa-github text-2xl"></i></a>
-              <a id="link-twitter" href="#" class="text-gray-300 hover:text-blue-400" aria-label="Twitter/X" target="_blank" rel="noopener noreferrer"><i class="fab fa-x-twitter text-2xl"></i></a>
+              <a id="link-linkedin" href="#" class="text-gray-300 hover:text-blue-400" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-linkedin text-2xl"></i></a>
+              <a id="link-github" href="#" class="text-gray-300 hover:text-blue-400" aria-label="GitHub" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github text-2xl"></i></a>
+              <a id="link-twitter" href="#" class="text-gray-300 hover:text-blue-400" aria-label="Twitter/X" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-x-twitter text-2xl"></i></a>
             </div>
           </div>
         </div>
+
         <div>
           <form id="contact-form" class="space-y-6" action="https://formspree.io/f/your_form_id" method="POST">
             <input type="hidden" name="_subject" value="Nuevo mensaje desde el Portafolio" />
@@ -438,7 +436,7 @@
               <label for="message" class="block text-sm font-medium mb-2">Mensaje</label>
               <textarea id="message" name="message" rows="4" required class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-[color:var(--brand)] focus:border-transparent text-white"></textarea>
             </div>
-            <div class="g-recaptcha" data-sitekey="YOUR_RECAPTCHA_SITE_KEY"></div>
+            <div class="g-recaptcha" data-sitekey="6LfDhesrAAAAAPlLDwrquJuP98s3v4bFtmfLPP0P"></div>
             <button type="submit" class="w-full bg-[color:var(--brand)] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[color:var(--brand-dark)]">Enviar mensaje</button>
             <p id="form-status" class="text-sm mt-3 hidden" role="status"></p>
           </form>
@@ -461,25 +459,30 @@
       brandDark: site.dataset.brandDark,
       brandSecondary: site.dataset.brandSecondary,
       brandAccent: site.dataset.brandAccent,
+
       name: site.dataset.name,
       role: site.dataset.role,
       email: site.dataset.email,
       phone: site.dataset.phone,
       location: site.dataset.location,
+
       linkedin: site.dataset.linkedin,
       github: site.dataset.github,
       twitter: site.dataset.twitter,
+
       ogUrl: site.dataset.ogUrl,
       ogImage: site.dataset.ogImage,
       favicon: site.dataset.favicon,
+
       formspree: site.dataset.formspree,
-      recaptcha: site.dataset.recaptcha
+      recaptcha: site.dataset.recaptcha,
+
+      avatar: site.dataset.avatar,
+      heroBg: site.dataset.heroBg
     };
 
-    // Imagen de fondo del Hero
-    if (site.dataset.heroBg) {
-      document.documentElement.style.setProperty('--hero-bg', `url('${site.dataset.heroBg}')`);
-    }
+    // Helper: normaliza rutas absolutas /assets → assets (GitHub Pages)
+    const rel = p => (p && p.startsWith('/')) ? p.slice(1) : p;
 
     // Colores de marca
     const root = document.documentElement;
@@ -488,10 +491,15 @@
     root.style.setProperty('--brand-secondary', cfg.brandSecondary);
     root.style.setProperty('--brand-accent', cfg.brandAccent);
 
+    // Imagen de fondo del hero
+    if (cfg.heroBg) {
+      document.documentElement.style.setProperty('--hero-bg', `url('${rel(cfg.heroBg)}')`);
+    }
+
     // Textos dinámicos
     document.getElementById('hero-name').textContent = cfg.name;
     document.getElementById('hero-role').textContent = cfg.role;
-    document.getElementById('nav-name').textContent = cfg.name;
+    document.getElementById('nav-name').textContent = 'Ing° ' + cfg.name;
     document.getElementById('footer-name').textContent = cfg.name;
 
     // Contacto dinámico
@@ -507,24 +515,30 @@
     document.getElementById('link-github').href = cfg.github;
     document.getElementById('link-twitter').href = cfg.twitter;
 
-    // Formspree & Recaptcha dinámicos
+    // Favicon y OG (relativas → absolutas si quieres compartir)
+    document.getElementById('meta-favicon').href = rel(cfg.favicon || 'assets/favicon.ico');
+    document.getElementById('og-image').setAttribute('content', rel(cfg.ogImage || 'assets/og-image.jpg'));
+    document.getElementById('og-url').setAttribute('content', cfg.ogUrl || 'https://cemega72.github.io/CesarMedrano/');
+
+    // Formspree & reCAPTCHA dinámicos
     const form = document.getElementById('contact-form');
+    const recEl = document.querySelector('.g-recaptcha');
     form.action = cfg.formspree;
-    document.querySelector('.g-recaptcha').setAttribute('data-sitekey', cfg.recaptcha);
+    if (recEl && cfg.recaptcha && cfg.recaptcha !== '6LfDhesrAAAAAPlLDwrquJuP98s3v4bFtmfLPP0P') {
+      recEl.setAttribute('data-sitekey', cfg.recaptcha);
+    }
 
     // Año dinámico
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Toggle menú móvil + accesibilidad
+    // Menú móvil toggle + accesibilidad
     const mobileBtn = document.getElementById('mobile-menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
-
     mobileBtn?.addEventListener('click', () => {
       const isHidden = mobileMenu.classList.toggle('hidden');
       mobileBtn.setAttribute('aria-expanded', String(!isHidden));
     });
-
-    // Cerrar el menú al navegar a una sección
+    // Cierra al hacer click en opción
     mobileMenu?.querySelectorAll('a[href^="#"]').forEach(a => {
       a.addEventListener('click', () => {
         mobileMenu.classList.add('hidden');
@@ -532,15 +546,13 @@
       });
     });
 
-    // Scroll suave
+    // Scroll suave para anclas
     document.querySelectorAll('a[href^="#"]').forEach(a => {
       a.addEventListener('click', e => {
         const target = document.querySelector(a.getAttribute('href'));
         if (target) {
           e.preventDefault();
           target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          mobileMenu?.classList.add('hidden');
-          mobileBtn?.setAttribute('aria-expanded', 'false');
         }
       });
     });
@@ -567,14 +579,15 @@
       }
     });
 
-    // Foto del Hero (opcional)
+    // Foto del Hero
     const avatar = document.getElementById('hero-avatar');
-    if (avatar && site.dataset.avatar) {
-      avatar.src = site.dataset.avatar;
+    if (avatar && cfg.avatar) {
+      avatar.src = rel(cfg.avatar);
       avatar.alt = cfg.name || 'Foto de perfil';
     }
-
   </script>
+
+  <!-- reCAPTCHA v2 -->
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </body>
 </html>
